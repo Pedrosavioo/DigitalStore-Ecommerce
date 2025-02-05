@@ -1,0 +1,23 @@
+.card-category {
+   padding: 1rem;
+   width: 30%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 1.5rem;
+   font-weight: 700;
+   letter-spacing: 0.75px;
+   transition: .5s;
+   cursor: pointer;
+
+   &:hover {
+      transform: scale(1.05);
+   }
+
+   & .ellipse {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 50%;
+   }
+}
