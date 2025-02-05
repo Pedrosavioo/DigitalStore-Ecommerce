@@ -1,0 +1,24 @@
+.btn {
+   border-radius: 8px;
+   height: 40px;
+   cursor: pointer;
+   transition: .5s;
+}
+
+.primary {
+   text-transform: capitalize;
+   background: var(--primary);
+   color: var(--light-gray-3);
+   
+   &:hover {
+      background: var(--tertiary);
+   }
+}
+
+.secondary {
+   background: none;
+   text-decoration: underline;
+   text-underline-offset: 5px;
+   letter-spacing: 0.75px;
+
+}

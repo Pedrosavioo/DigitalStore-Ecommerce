@@ -1,0 +1,138 @@
+footer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem;
+   background-color: var(--dark-gray);
+   padding: 3rem 2rem;
+   color: var(--light-gray-3);
+
+   & #first-div-footer {
+      width: 100%;
+      max-width: 1444px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      font-size: 1.05rem;
+
+      & #div-social {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+
+         & img {
+            width: 200px;
+            height: 50px;
+         }
+
+         & p {
+            color: var(--light-gray-2);
+         }
+
+         & #div-icons-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+
+            & img {
+               width: 24px;
+               height: 24px;
+               cursor: pointer;
+            }
+         }
+      }
+
+      & #container-navigation {
+         display: flex;
+         gap: 4rem;
+
+         #information,
+         #category {
+            & ul {
+               display: flex;
+               flex-direction: column;
+               gap: 0.8rem;
+               margin-top: 1rem;
+
+               & li {
+                  & a {
+                     color: var(--light-gray-2);
+                     transition: 0.5s;
+
+                     &:hover {
+                        color: var(--light-gray-3);
+                     }
+                  }
+               }
+            }
+         }
+      }
+      
+      #contact {
+         & ul {
+            & li {
+               color: var(--light-gray-2);
+            }
+         }
+      }
+   }
+
+   & hr {
+      background: var(--light-gray-2);
+      height: 1px;
+      width: 100%;
+      max-width: 1444px;
+   }
+
+   & #div-digital-college {
+      display: flex;
+      justify-content: center;
+   }
+}
+
+@media (min-width: 850px) {
+   footer {
+      & #first-div-footer {
+         flex-direction: row;
+         font-size: 1rem;
+         width: 100%;
+
+         & #div-social {
+            width: 35%;
+
+            & p {
+               width: 70%;
+            }
+         }
+
+         & #container-navigation {
+            display: flex;
+            justify-content: center;
+            width: 40%;
+            gap: 7rem;
+         }
+
+         & #contact {
+            width: 25%;
+
+            & ul {
+               margin-top: 1rem;
+               display: flex;
+               flex-direction: column;
+               gap: 1rem;
+            }
+         }
+      }
+
+      & hr {
+         background: var(--light-gray-2);
+         height: 1px;
+         width: 100%;
+      }
+
+      & #div-digital-college {
+         display: flex;
+         justify-content: center;
+      }
+   }
+}
