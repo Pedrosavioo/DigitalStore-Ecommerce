@@ -1,0 +1,245 @@
+#homepage {
+   background-color: var(--light-gray-3);
+   min-height: 92vh;
+   height: fit-content;
+   margin-top: 8vh;
+
+   & #collection-section {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1rem 2rem;
+
+      & h4 {
+         font-size: 1rem;
+         font-weight: 700;
+         color: var(--dark-gray-2);
+         letter-spacing: 0.75px;
+      }
+
+      & #cards-collection {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 1rem;
+      }
+   }
+
+   & #category-section {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      gap: 2rem;
+
+      & h4 {
+         font-size: 1rem;
+         font-weight: 700;
+         color: var(--dark-gray-2);
+         letter-spacing: 0.75px;
+      }
+
+      & #cards-category {
+         display: flex;
+         overflow-y: hidden;
+         overflow-x: auto;
+         gap: 1rem;
+      }
+   }
+
+   & #products-section {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      gap: 2rem;
+
+      & #div-title {
+         display: flex;
+         justify-content: space-between;
+
+         & h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-gray-2);
+            letter-spacing: 0.75px;
+         }
+
+         & button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            letter-spacing: 0.25px;
+            font-size: 0.9rem;
+         }
+      }
+
+      & #cards-products {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
+         gap: 2rem 1rem;
+      }
+   }
+
+   & #collector-edition-section {
+      display: flex;
+      background-color: var(--white);
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+
+      & #image-air-jordan {
+         width: 100%;
+         height: 280px;
+         background-image: url("../../../public/assets/ellipse-gradient.webp"),
+            url("../../../public/assets/img-tennis.webp");
+         background-repeat: no-repeat;
+         background-position: center;
+      }
+
+      & #content-collector-edition {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+
+         & #special-offer {
+            color: var(--warning);
+            letter-spacing: 0.75px;
+            font-weight: 700;
+            text-transform: capitalize;
+         }
+
+         & h4 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--dark-gray-2);
+         }
+
+         & p {
+            color: var(--dark-gray-2);
+            font-weight: 500;
+         }
+
+         & button {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 4rem;
+            margin-top: 1rem;
+         }
+      }
+   }
+}
+
+@media (min-width: 750px) {
+   #homepage {
+      & #collection-section {
+         min-height: fit-content;
+
+         & #cards-collection {
+            overflow-x: auto;
+            gap: 1rem;
+            flex-direction: row;
+         }
+      }
+   }
+}
+
+@media (min-width: 850px) {
+   #homepage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: calc(135px + 1rem);
+
+      & #center-carousel {
+         width: 100%;
+         max-width: 1444px;
+      }
+
+      & #collection-section {
+         width: 100%;
+         max-width: 1444px;
+         padding: 106px 2rem;
+
+         & h4 {
+            font-size: 1.5rem;
+         }
+
+         & #cards-collection {
+            overflow: hidden;
+         }
+      }
+      & #category-section {
+         justify-content: center;
+         align-items: center;
+         padding: 2rem;
+
+         & h4 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.75px;
+         }
+
+         & #cards-category {
+            overflow: hidden;
+         }
+      }
+      & #products-section {
+         display: flex;
+         flex-direction: column;
+         padding: 106px 2rem;
+         gap: 40px;
+         max-width: 1444px;
+
+         & #div-title {
+            & h4 {
+               font-size: 1.3rem;
+            }
+         }
+
+         & #cards-products {
+            justify-content: space-between;
+            gap: 2rem 1rem;
+         }
+      }
+      & #collector-edition-section {
+         padding: 106px 2rem;
+         justify-content: center;
+         flex-direction: row;
+         align-items: center;
+         gap: 100px;
+         width: 100%;
+
+         & #image-air-jordan {
+            width: 50%;
+            max-width: 722px;
+            height: 330px;
+            background-size: contain;
+         }
+
+         & #content-collector-edition {
+            width: 50%;
+            max-width: 722px;
+
+            & #special-offer {
+               color: var(--primary);
+            }
+
+            & h4 {
+               font-size: 3.5rem;
+            }
+
+            & p {
+               line-height: 28px;
+               letter-spacing: 0.75px;
+               width: 80%;
+            }
+         }
+      }
+   }
+}
