@@ -1,0 +1,73 @@
+.card-product {
+   width: 47%;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+   transition: 0.2s;
+   cursor: pointer;
+
+   &:hover {
+      transform: scale(1.05);
+   }
+
+   & .image-card-product {
+      width: 100%;
+      height: 200px;
+      background-color: var(--white);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      & p {
+         background-color: #e7ff86;
+         color: var(--dark-gray-2);
+         width: fit-content;
+         padding: 0.5rem 0.8rem;
+         border-radius: 1rem;
+         font-weight: 700;
+         text-transform: uppercase;
+         transform: scale(0.8);
+      }
+   }
+
+   & .content-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .category-card {
+         font-size: 0.7rem;
+         color: var(--light-gray);
+         letter-spacing: 0.75px;
+         text-transform: capitalize;
+      }
+
+      .title-card {
+         font-size: 0.9rem;
+         font-weight: 500;
+         color: var(--dark-gray-2);
+         white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+         overflow: hidden; /* Esconde o excesso de texto */
+         text-overflow: ellipsis; /* Adiciona as reticências */
+      }
+
+      .price-card {
+         display: flex;
+         gap: 0.5rem;
+         font-weight: 700;
+         color: var(--dark-gray);
+
+         & span {
+            text-decoration: line-through;
+            color: var(--light-gray);
+            font-weight: 400;
+         }
+      }
+   }
+}
+
+@media (min-width: 850px) {
+   .card-product {
+      width: 22%;
+   }
+}
