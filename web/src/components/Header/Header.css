@@ -1,0 +1,223 @@
+#header-mobile {
+   width: 100vw;
+   min-height: 50px;
+   background-color: var(--white);
+   position: fixed;
+   z-index: 10;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1rem 2rem;
+
+   & #img-logo-header {
+      width: 250px;
+      height: 24px;
+   }
+
+   & #div-cart {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      & svg {
+         cursor: pointer;
+      }
+   }
+
+   & #input-search-mobile {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.2rem 1rem;
+      border-radius: 8px;
+      background-color: var(--light-gray-3);
+
+      & input {
+         background: none;
+         padding-left: 0.5rem;
+         width: 90%;
+         height: 50px;
+         font-size: 1.1rem;
+      }
+
+      & svg {
+         width: 24px;
+         height: 24px;
+      }
+   }
+}
+
+#header-desktop {
+   width: 100%;
+   z-index: 10;
+   background-color: var(--white);
+   position: fixed;
+   min-height: 130px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+
+   & #center-header-desktop {
+      width: 100%;
+      max-width: 1444px;
+      height: 135px;
+   }
+
+   & #div-first-desktop {
+      width: 100%;
+      display: flex;
+      padding: 0 2rem;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+
+      & #img-logo-header {
+         width: 180px;
+         height: 35px;
+      }
+
+      & #input-search-mobile {
+         width: 45%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 0 1rem;
+         height: 35px;
+         border-radius: 8px;
+         background-color: var(--light-gray-3);
+
+         & input {
+            background: none;
+            padding-left: 0.5rem;
+            width: 90%;
+            font-size: 1rem;
+         }
+
+         & svg {
+            width: 24px;
+            height: 24px;
+         }
+      }
+
+      & #div-buttons-desktop {
+         display: flex;
+         justify-content: space-between;
+         gap: 2rem;
+         height: 100%;
+         align-items: center;
+
+         & div {
+            display: flex;
+            gap: 1rem;
+         }
+
+         & button {
+            height: 40px;
+         }
+      }
+   }
+
+   & nav {
+      & ul {
+         width: fit-content;
+         display: flex;
+         gap: 1rem;
+         margin-left: 2rem;
+
+         & li {
+            & a {
+               color: var(--light-gray);
+               padding-bottom: 0.2rem;
+               font-size: 1.1rem;
+               cursor: pointer;
+
+               &:hover {
+                  color: var(--primary);
+                  border-bottom: 3px solid var(--primary);
+               }
+            }
+         }
+      }
+   }
+}
+
+.select {
+   color: var(--primary);
+   border-bottom: 3px solid var(--primary);
+}
+
+@media (max-width: 400px) {
+   #header-mobile {
+      flex-wrap: nowrap;
+   }
+
+   & #input-search-mobile {
+      position: absolute;
+      top: 100px;
+      z-index: 2;
+      transform: scale(0.9);
+   }
+}
+
+@media (min-width: 950px) {
+   #header-desktop {
+      & #div-first-desktop {
+         & #img-logo-header {
+            width: 220px;
+            height: 44px;
+         }
+      }
+   }
+}
+
+@media (min-width: 1100px) {
+   #header-desktop {
+      & #div-first-desktop {
+         & #img-logo-header {
+            width: 250px;
+            height: 44px;
+         }
+      }
+   }
+}
+
+@media (min-width: 1200px) {
+   #header-desktop {
+      & #div-first-desktop {
+         & #input-search-mobile {
+            width: 52%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            height: 45px;
+            border-radius: 8px;
+            background-color: var(--light-gray-3);
+
+            & input {
+               background: none;
+               padding-left: 0.5rem;
+               width: 90%;
+               font-size: 1rem;
+            }
+
+            & svg {
+               width: 24px;
+               height: 24px;
+            }
+         }
+
+         & #div-buttons-desktop {
+            gap: 3rem;
+
+            & div {
+               gap: 1.5rem;
+            }
+         }
+      }
+   }
+}
