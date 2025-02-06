@@ -9,7 +9,11 @@ import Button from "../Button/Button";
 import { useSelected } from "../../context/SelectedContext";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+interface props {
+   onlyTheLogo?: true;
+}
+
+const Header: React.FC<props> = ({ onlyTheLogo }) => {
    const [openSearch, setOpenSearch] = useState(false);
    const isMobile = useMediaQuery("(max-width: 850px)");
 
@@ -26,6 +30,10 @@ const Header = () => {
          navigate("/products");
          setStyledSelected(numberPage);
       }
+   }
+
+   function navigateToLogin() {
+      navigate("/login");
    }
 
    const handleSearchClick = () => {
@@ -69,60 +77,79 @@ const Header = () => {
                         alt="Logo Digital Store"
                         id="img-logo-header"
                      />
-                     <div id="input-search-mobile">
-                        <input type="text" placeholder="Pesquisar" />
-                        <Search color="var(--dark-gray-2)" />
-                     </div>
-                     <div id="div-buttons-desktop">
-                        <div>
-                           <Button
-                              width="100px"
-                              content="entrar"
-                              type="primary"
-                           />
-                           <Button content="Cadastre-se" type="secondary" />
-                        </div>
-                        <Badge badgeContent={4} color="error">
-                           <ShoppingCart color="var(--primary)" />
-                        </Badge>
-                     </div>
+                     {!onlyTheLogo && (
+                        <>
+                           <div id="input-search-mobile">
+                              <input type="text" placeholder="Pesquisar" />
+                              <Search color="var(--dark-gray-2)" />
+                           </div>
+                           <div id="div-buttons-desktop">
+                              <div>
+                                 <Button
+                                    width="100px"
+                                    content="entrar"
+                                    type="primary"
+                                    onClick={() => navigateToLogin()}
+                                 />
+                                 <Button
+                                    content="Cadastre-se"
+                                    type="secondary"
+                                 />
+                              </div>
+                              <Badge badgeContent={4} color="error">
+                                 <ShoppingCart color="var(--primary)" />
+                              </Badge>
+                           </div>
+                        </>
+                     )}
                   </div>
-                  <nav>
-                     <ul>
-                        <li>
-                           <a
-                              onClick={() => navigatePage(0)}
-                              className={styledSelected === 0 ? "select" : ""}
-                           >
-                              Home
-                           </a>
-                        </li>
-                        <li>
-                           <a
-                              onClick={() => navigatePage(1)}
-                              className={styledSelected === 1 ? "select" : ""}
-                           >
-                              Produtos
-                           </a>
-                        </li>
-                        <li>
-                           <a
-                              onClick={() => navigatePage(2)}
-                              className={styledSelected === 2 ? "select" : ""}
-                           >
-                              Categorias
-                           </a>
-                        </li>
-                        <li>
-                           <a
-                              onClick={() => navigatePage(3)}
-                              className={styledSelected === 3 ? "select" : ""}
-                           >
-                              Meus Produtos
-                           </a>
-                        </li>
-                     </ul>
-                  </nav>
+                  {/* Não renderizar o menu de navegação, quando for necessário exibir somente a logo no header */}
+                  {!onlyTheLogo && (
+                     <nav>
+                        <ul>
+                           <li>
+                              <a
+                                 onClick={() => navigatePage(0)}
+                                 className={
+                                    styledSelected === 0 ? "select" : ""
+                                 }
+                              >
+                                 Home
+                              </a>
+                           </li>
+                           <li>
+                              <a
+                                 onClick={() => navigatePage(1)}
+                                 className={
+                                    styledSelected === 1 ? "select" : ""
+                                 }
+                              >
+                                 Produtos
+                              </a>
+                           </li>
+                           <li>
+                              <a
+                                 onClick={() => navigatePage(2)}
+                                 className={
+                                    styledSelected === 2 ? "select" : ""
+                                 }
+                              >
+                                 Categorias
+                              </a>
+                           </li>
+                           <li>
+                              <a
+                                 onClick={() => navigatePage(3)}
+                                 className={
+                                    styledSelected === 3 ? "select" : ""
+                                 }
+                              >
+                                 Meus Produtos
+                              </a>
+                           </li>
+                        </ul>
+                     </nav>
+                  )}
                </div>
             </header>
          )}
