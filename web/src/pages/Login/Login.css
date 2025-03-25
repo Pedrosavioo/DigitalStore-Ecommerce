@@ -48,6 +48,7 @@ header#header-desktop {
          &#recover-password {
             color: var(--dark-gray-2);
             text-decoration: underline;
+            font-size: 14px;
             cursor: pointer;
          }
       }
@@ -83,6 +84,12 @@ header#header-desktop {
 
             &:hover {
                background-color: #a31a5c;
+            }
+
+            &:disabled {
+               background: var(--light-gray-2);
+               color: var(--light-gray-3);
+               cursor: not-allowed;
             }
          }
       }
