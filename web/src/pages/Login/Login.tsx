@@ -1,15 +1,36 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header/Header";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { useUser } from "../../context/UserContext";
+import MessageBox from "../../components/MessageBox/MessageBox";
+import { IUser } from "../../interfaces/IUser";
 
 const Login = () => {
+   const { getInfoMe } = useUser();
+
    const navigate = useNavigate();
 
-   // const {  } = useUser();
+   const inputLoginRef = useRef<HTMLInputElement>(null);
+   const inputPasswordRef = useRef<HTMLInputElement>(null);
+
+   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+   // Função para verificar se campos foram preenchidos
+   const checkInputs = () => {
+      const loginValue = inputLoginRef.current?.value;
+      const passwordValue = inputPasswordRef.current?.value;
+
+      if (loginValue && passwordValue) {
+         setIsButtonDisabled(false);
+      } else {
+         setIsButtonDisabled(true);
+      }
+   };
+
+   const { setUser } = useUser();
 
    // função que será executada quando o formulário for submetido
    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -21,35 +42,45 @@ const Login = () => {
 
       // validação dos campos
       if (!email || !password) {
-         alert("Preencha todos os campos!");
+         toast.error("Preencha todos os campos!", { duration: Infinity });
          return;
       }
 
-      // faz a requisição para a API
-      fetch("http://localhost:3001/v1/login", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         credentials: "include",
-         body: JSON.stringify({ email, password }),
-      })
-         .then((response) => response.json())
-         .then((data) => {
-            if (data.error) {
-               alert(data.message);
-               return;
-            }
+      const promise = new Promise((resolve, reject) => {
+         fetch("http://localhost:3001/v1/login", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({ email, password }),
+         })
+            .then((response) => response.json())
+            .then((data) => {
+               if (data.error) {
+                  reject(new Error(data.message)); // Rejeita passando a mensagem de erro
+               } else {
+                  resolve(data); // Sucesso
+               }
+            })
+            .catch((error) => {
+               reject(new Error(error.message || "Erro na requisição"));
+            });
+      });
 
-            toast.success("Login realizado com sucesso!");
-
+      toast.promise(promise, {
+         loading: "Validando dados...",
+         success: (data) => {
+            getInfoMe();
+            
             setTimeout(() => {
                navigate("/");
             }, 1000);
-         })
-         .catch((error) => {
-            console.error("Erro:", error);
-         });
+            
+            return `Login realizado com sucesso!`;
+         },
+         error: (error) => error.message || "Erro ao realizar login!",
+      });
    }
 
    return (
@@ -70,6 +101,8 @@ const Login = () => {
                               type="text"
                               name="login"
                               placeholder="Digite seu login ou email"
+                              ref={inputLoginRef}
+                              onChange={checkInputs}
                            />
                         </label>
                         <label htmlFor="">
@@ -78,9 +111,13 @@ const Login = () => {
                               type="text"
                               name="password"
                               placeholder="Insira sua senha"
+                              ref={inputPasswordRef}
+                              onChange={checkInputs}
                            />
                         </label>
-                        <button type="submit">Acessar conta</button>
+                        <button type="submit" disabled={isButtonDisabled}>
+                           Acessar conta
+                        </button>
                      </form>
 
                      <p id="recover-password">Esqueci minha senha</p>
@@ -97,10 +134,8 @@ const Login = () => {
                         id="img-login-2"
                      />
                   </div>
-
-                  {/* // Add component Toaster (Message) */}
-                  <Toaster />
                </section>
+               <MessageBox />
             </section>
          </main>
       </>
