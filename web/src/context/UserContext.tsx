@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 interface UserContextTypeI {
    user: IUser | null;
    setUser: (user: IUser | null) => void;
-   getInfoMe: (email: string) => void;
+   getInfoMe: () => void;
 }
 
 const UserContext = createContext<UserContextTypeI | undefined>(undefined);
@@ -15,6 +15,16 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
    children,
 }) => {
    const [user, setUser] = useState<IUser | null>(null);
+
+   // Verificar cookie token
+   useEffect(() => {
+      const token = document.cookie
+         .split(";")
+         .find((cookie) => cookie.trim().startsWith("token="));
+      if (token) {
+         getInfoMe();
+      }
+   }, []);
 
    async function getInfoMe() {
       try {
