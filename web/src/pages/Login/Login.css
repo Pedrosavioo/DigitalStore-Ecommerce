@@ -1,0 +1,119 @@
+header#header-desktop {
+   min-height: 0;
+   height: 100px;
+}
+
+#login {
+   background: var(--linear-gradient-1);
+   width: 100vw;
+   height: calc(100vh - 100px);
+   margin-top: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   & #content-login {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      max-width: 1444px;
+   }
+
+   & #div-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      width: 35%;
+
+      & h1 {
+         color: var(--dark-gray);
+         font-size: 32px;
+         letter-spacing: 0.8px;
+      }
+
+      & p {
+         letter-spacing: 0.8px;
+
+         & span {
+            text-decoration: underline;
+            cursor: pointer;
+            color: var(--tertiary);
+         }
+
+         &#recover-password {
+            color: var(--dark-gray-2);
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+         }
+      }
+
+      & form {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         margin-top: 1rem;
+
+         & label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            & input {
+               padding: 1rem;
+               width: 100%;
+               background: var(--light-gray-3);
+               border-radius: 8px;
+            }
+         }
+
+         & button {
+            padding: 1rem;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            transition: 0.5s;
+
+            &:hover {
+               background-color: #a31a5c;
+            }
+
+            &:disabled {
+               background: var(--light-gray-2);
+               color: var(--light-gray-3);
+               cursor: not-allowed;
+            }
+         }
+      }
+   }
+
+   & #div-images {
+      display: flex;
+      width: 700px;
+      height: 600px;
+      position: relative;
+
+      & #img-login-1 {
+         width: 400px;
+         height: 480px;
+         position: relative;
+         top: 0;
+      }
+
+      & #img-login-2 {
+         width: 400px;
+         height: 550px;
+         position: absolute;
+         bottom: 0;
+         right: 0;
+      }
+   }
+}

@@ -4,16 +4,19 @@ import App from "./App";
 import "./index.css";
 import { SelectedProvider } from "./context/SelectedContext";
 import { ProductProvider } from "./context/ProductsContext";
+import { UserProvider } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(
    document.getElementById("root") as HTMLElement
 );
 root.render(
    <React.StrictMode>
-      <ProductProvider>
-         <SelectedProvider>
-            <App />
-         </SelectedProvider>
-      </ProductProvider>
+      <UserProvider>
+         <ProductProvider>
+            <SelectedProvider>
+               <App />
+            </SelectedProvider>
+         </ProductProvider>
+      </UserProvider>
    </React.StrictMode>
 );

@@ -1,0 +1,9 @@
+li[data-type="error"] {
+   background: rgb(244, 99, 99) !important;
+   color: rgb(250, 250, 250) !important;
+}
+
+li[data-type="success"] {
+   background: rgb(180, 225, 180) !important;
+   color: rgb(50, 74, 50) !important;
+}

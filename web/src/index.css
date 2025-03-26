@@ -17,6 +17,12 @@
    --light-gray-2: #cccccc;
    --light-gray-3: #f5f5f5;
    --white: #ffffff;
+   /* Gradients */
+   --linear-gradient-1: linear-gradient(
+      90deg,
+      #b5b6f2 0%,
+      #efefff 100%
+   );
 }
 
 /* Reset */
