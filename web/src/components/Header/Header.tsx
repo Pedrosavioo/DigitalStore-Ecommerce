@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import TemporaryDrawer from "../Drawer/Drawer";
 import { Badge, useMediaQuery } from "@mui/material";
@@ -8,12 +8,17 @@ import Search from "../../icons/Search";
 import Button from "../Button/Button";
 import { useSelected } from "../../context/SelectedContext";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
+
+import PersonIcon from "@mui/icons-material/Person";
 
 interface props {
    onlyTheLogo?: true;
 }
 
 const Header: React.FC<props> = ({ onlyTheLogo }) => {
+   const { user } = useUser();
+
    const [openSearch, setOpenSearch] = useState(false);
    const isMobile = useMediaQuery("(max-width: 850px)");
 
@@ -85,20 +90,36 @@ const Header: React.FC<props> = ({ onlyTheLogo }) => {
                            </div>
                            <div id="div-buttons-desktop">
                               <div>
-                                 <Button
-                                    width="100px"
-                                    content="entrar"
-                                    type="primary"
-                                    onClick={() => navigateToLogin()}
-                                 />
-                                 <Button
-                                    content="Cadastre-se"
-                                    type="secondary"
-                                 />
+                                 {/* // Não exibir botão de login quando o usuário estiver logado */}
+                                 {!user ? (
+                                    <>
+                                       <Button
+                                          width="100px"
+                                          content="entrar"
+                                          type="primary"
+                                          onClick={() => navigateToLogin()}
+                                       />
+                                       <Button
+                                          content="Cadastre-se"
+                                          type="secondary"
+                                       />
+                                       <Badge badgeContent={4} color="error">
+                                          <ShoppingCart color="var(--primary)" />
+                                       </Badge>
+                                    </>
+                                 ) : (
+                                    // Exibir o nome do usuário quando ele estiver logado
+                                    <>
+                                       <Badge badgeContent={4} color="error">
+                                          <ShoppingCart color="var(--primary)" />
+                                       </Badge>
+                                       <div id="user-header">
+                                          <PersonIcon style={{ color: "var(--primary)", width: "30px", height: "30px" }} />
+                                          <span>{`Olá, ${user.firstname}`}</span>
+                                       </div>
+                                    </>
+                                 )}
                               </div>
-                              <Badge badgeContent={4} color="error">
-                                 <ShoppingCart color="var(--primary)" />
-                              </Badge>
                            </div>
                         </>
                      )}
