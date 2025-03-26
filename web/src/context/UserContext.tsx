@@ -37,7 +37,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
          });
          const data = await response.json();
 
-         console.log("dados obtidos com sucesso", data);
          setUser(data);
       } catch (error) {
          console.log(error);
