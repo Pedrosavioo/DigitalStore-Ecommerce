@@ -37,10 +37,6 @@ const Header: React.FC<props> = ({ onlyTheLogo }) => {
       }
    }
 
-   function navigateToLogin() {
-      navigate("/login");
-   }
-
    const handleSearchClick = () => {
       setOpenSearch((prev) => !prev);
    };
@@ -97,11 +93,12 @@ const Header: React.FC<props> = ({ onlyTheLogo }) => {
                                           width="100px"
                                           content="entrar"
                                           type="primary"
-                                          onClick={() => navigateToLogin()}
+                                          onClick={() => navigate("/login")}
                                        />
                                        <Button
                                           content="Cadastre-se"
                                           type="secondary"
+                                          onClick={() => navigate("/register")}
                                        />
                                        <Badge badgeContent={4} color="error">
                                           <ShoppingCart color="var(--primary)" />

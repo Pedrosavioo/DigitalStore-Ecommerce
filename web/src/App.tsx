@@ -5,12 +5,14 @@ import Homepage from "./pages/Homepage/Homepage";
 import ProductListing from "./pages/ProductListing/ProductListing";
 import ProductView from "./pages/ProductView.tsx/ProductView";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
    return (
       <Router>
          <Routes>
             <Route element={<Login />} path="/login" />
+            <Route element={<Register />} path="/register" />
             <Route path="/" element={<Layout />}>
                <Route element={<Homepage />} index />
                <Route element={<ProductListing />} path="/products" />
